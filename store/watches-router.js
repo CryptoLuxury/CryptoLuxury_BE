@@ -4,7 +4,7 @@ const Watches = require('./watches-model')
 
 const router = express.Router()
 
-router.get('/watches', restricted, (req, res) => {
+router.get('/watches', (req, res) => {
     
     Watches.findAll()
     .then(watches => {
@@ -15,7 +15,7 @@ router.get('/watches', restricted, (req, res) => {
     })
 })
 
-router.get('/watches/:id', restricted, (req, res) => {
+router.get('/watches/:id', (req, res) => {
     const { id } = req.params;
 
     Watches.findById(id)
@@ -31,7 +31,7 @@ router.get('/watches/:id', restricted, (req, res) => {
     })
 })
 
-router.post('/watches', (req, res) => {
+router.post('/watches', restricted, (req, res) => {
     const data = req.body;
 
     Watches.add(data)

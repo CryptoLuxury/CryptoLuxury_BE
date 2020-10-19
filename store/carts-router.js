@@ -4,7 +4,7 @@ const Carts = require('./carts-model')
 
 const router = express.Router()
 
-router.get('/carts', restricted, (req, res) => {
+router.get('/carts', (req, res) => {
     
     Carts.findAll()
     .then(carts => {
@@ -15,7 +15,7 @@ router.get('/carts', restricted, (req, res) => {
     })
 })
 
-router.get('/carts/:id', restricted, (req, res) => {
+router.get('/carts/:id', (req, res) => {
     const { id } = req.params;
 
     Carts.findById(id)
@@ -31,7 +31,7 @@ router.get('/carts/:id', restricted, (req, res) => {
     })
 })
 
-router.post('/carts', (req, res) => {
+router.post('/carts', restricted, (req, res) => {
     const data = req.body;
 
     Carts.add(data)

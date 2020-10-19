@@ -4,7 +4,7 @@ const Cards = require('./cards-model')
 
 const router = express.Router()
 
-router.get('/cards', restricted, (req, res) => {
+router.get('/cards', (req, res) => {
     
     Cards.findAll()
     .then(cards => {
@@ -15,7 +15,7 @@ router.get('/cards', restricted, (req, res) => {
     })
 })
 
-router.get('/cards/:id', restricted, (req, res) => {
+router.get('/cards/:id', (req, res) => {
     const { id } = req.params;
 
     Cards.findById(id)
@@ -31,7 +31,7 @@ router.get('/cards/:id', restricted, (req, res) => {
     })
 })
 
-router.post('/cards', (req, res) => {
+router.post('/cards', restricted, (req, res) => {
     const data = req.body;
 
     Cards.add(data)
