@@ -10,6 +10,9 @@ const adminRouter = require('../admins/admins-router.js')
 const contactRouter = require('../forms/contact-router.js')
 const devTicketRouter = require('../forms/devTicket-router.js')
 
+const cardOrders = require('../orders/cardOrders-router.js')
+const watchOrders = require('../orders/watchOrders-router.js')
+
 const cartsRouter = require('../store/carts-router.js')
 const cardsRouter = require('../store/cards-router.js')
 const watchesRouter = require('../store/watches-router.js')
@@ -27,6 +30,8 @@ server.use('/api/accounts', userRouter);
 
 server.use('/api/form', contactRouter);
 server.use('/api/form', devTicketRouter);
+server.use('/api/form', cardOrders);
+server.use('/api/form', watchOrders);
 
 server.use('/api/store', cartsRouter);
 server.use('/api/store', cardsRouter);
