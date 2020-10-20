@@ -9,6 +9,7 @@ const adminRouter = require('../admins/admins-router.js')
 
 const contactRouter = require('../forms/contact-router.js')
 const devTicketRouter = require('../forms/devTicket-router.js')
+const enlistRouter = require('../forms/enlist-router.js')
 
 const cardOrders = require('../orders/cardOrders-router.js')
 const watchOrders = require('../orders/watchOrders-router.js')
@@ -30,6 +31,7 @@ server.use('/api/accounts', userRouter);
 
 server.use('/api/form', contactRouter);
 server.use('/api/form', devTicketRouter);
+server.use('/api/form', enlistRouter);
 server.use('/api/form', cardOrders);
 server.use('/api/form', watchOrders);
 
