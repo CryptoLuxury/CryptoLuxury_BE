@@ -15,7 +15,7 @@ router.get('/users', (req, res) => {
     })
 })
 
-router.get('/users/:id', (req, res) => {
+router.get('/users/:email', (req, res) => {
     email = req.params.email
 
     Users.findBy(id)

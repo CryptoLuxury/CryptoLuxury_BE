@@ -19,9 +19,9 @@ router.get('/admins/:id', (req, res) => {
     id = req.params.id
 
     Admin.findById(id)
-    .then(user => {
-        if(user.id > 0){
-            return res.status(200).json(user)
+    .then(admin => {
+        if(admin.id > 0){
+            return res.status(200).json(admin)
         } else {
             return res.status(404).json({ message: 'Error id invalid' })
         }
@@ -36,18 +36,18 @@ router.put('/admins/:id', (req, res) => {
     const changes = req.body;
 
     Admin.findById(id)
-    .then(user => {
-        if (user){
+    .then(admin => {
+        if (admin){
             admin.update(changes, id)
             .then(updatedAdmin => {
                 res.status(200).json(updatedAdmin)
             });
         } else {
-            res.status(404).json({ message: 'Could not find specified user'})
+            res.status(404).json({ message: 'Could not find specified admin'})
         }
     })
     .catch(() => {
-        res.status(500).json({ message: 'Error updating user' })
+        res.status(500).json({ message: 'Error updating admin' })
     })
 })
 
@@ -59,7 +59,7 @@ router.delete('/admins/:id', (req, res) => {
         if(deleted) {
             res.status(200).json({ message: 'admin Removed' })
         } else {
-            res.status(404).json({ message: 'Could not find specified user' })
+            res.status(404).json({ message: 'Could not find specified admin' })
         }
     })
     .catch(() => {
