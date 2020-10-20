@@ -31,7 +31,7 @@ router.get('/watches/:id', (req, res) => {
     })
 })
 
-router.post('/watches', restricted, (req, res) => {
+router.post('/watches', (req, res) => {
     const data = req.body;
 
     Watches.add(data)
@@ -43,7 +43,7 @@ router.post('/watches', restricted, (req, res) => {
     })
 })
 
-router.put('/watches/:id', restricted, (req, res) => {
+router.put('/watches/:id', (req, res) => {
     const { id } = req.params;
     const changes = req.body;
 
@@ -63,7 +63,7 @@ router.put('/watches/:id', restricted, (req, res) => {
     })
 })
 
-router.delete('/watches', restricted, (req, res) => {
+router.delete('/watches', (req, res) => {
 
     Watches.removeAll()
     .then(() => {
@@ -74,7 +74,7 @@ router.delete('/watches', restricted, (req, res) => {
     })
 })
 
-router.delete('/watches/:id', restricted, (req, res) => {
+router.delete('/watches/:id', (req, res) => {
     const { id } = req.params;
 
     Watches.removeById(id)

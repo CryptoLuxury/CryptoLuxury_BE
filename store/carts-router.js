@@ -47,7 +47,7 @@ router.get('/carts/:userid', (req, res) => {
     })
 })
 
-router.post('/carts', restricted, (req, res) => {
+router.post('/carts', (req, res) => {
     const data = req.body;
 
     Carts.add(data)
@@ -59,7 +59,7 @@ router.post('/carts', restricted, (req, res) => {
     })
 })
 
-router.put('/carts/:id', restricted, (req, res) => {
+router.put('/carts/:id', (req, res) => {
     const { id } = req.params;
     const changes = req.body;
 
@@ -79,7 +79,7 @@ router.put('/carts/:id', restricted, (req, res) => {
     })
 })
 
-router.delete('/carts', restricted, (req, res) => {
+router.delete('/carts', (req, res) => {
 
     Carts.removeAll()
     .then(() => {
@@ -90,7 +90,7 @@ router.delete('/carts', restricted, (req, res) => {
     })
 })
 
-router.delete('/carts/:id', restricted, (req, res) => {
+router.delete('/carts/:id', (req, res) => {
     const { id } = req.params;
 
     Carts.removeById(id)

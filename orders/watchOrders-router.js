@@ -47,7 +47,7 @@ router.get('/watchOrders/:userid', (req, res) => {
     })
 })
 
-router.post('/watchOrders', restricted, (req, res) => {
+router.post('/watchOrders', (req, res) => {
     const data = req.body;
 
     WatchOrders.add(data)
@@ -59,7 +59,7 @@ router.post('/watchOrders', restricted, (req, res) => {
     })
 })
 
-router.put('/watchOrders/:id', restricted, (req, res) => {
+router.put('/watchOrders/:id', (req, res) => {
     const { id } = req.params;
     const changes = req.body;
 
@@ -79,7 +79,7 @@ router.put('/watchOrders/:id', restricted, (req, res) => {
     })
 })
 
-router.delete('/watchOrders', restricted, (req, res) => {
+router.delete('/watchOrders', (req, res) => {
 
     WatchOrders.removeAll()
     .then(() => {
@@ -90,7 +90,7 @@ router.delete('/watchOrders', restricted, (req, res) => {
     })
 })
 
-router.delete('/watchOrders/:id', restricted, (req, res) => {
+router.delete('/watchOrders/:id', (req, res) => {
     const { id } = req.params;
 
     WatchOrders.removeById(id)

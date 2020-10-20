@@ -4,7 +4,7 @@ const Users = require('./users-model.js')
 
 const router = express.Router()
 
-router.get('/users', restricted, (req, res) => {
+router.get('/users', (req, res) => {
 
     Users.findAll()
     .then(users => {
@@ -15,7 +15,7 @@ router.get('/users', restricted, (req, res) => {
     })
 })
 
-router.get('/users/:id', restricted, (req, res) => {
+router.get('/users/:id', (req, res) => {
     email = req.params.email
 
     Users.findBy(id)
@@ -31,7 +31,7 @@ router.get('/users/:id', restricted, (req, res) => {
     })
 })
 
-router.get('/users/:id', restricted, (req, res) => {
+router.get('/users/:id', (req, res) => {
     id = req.params.id
 
     Users.findById(id)
@@ -47,7 +47,7 @@ router.get('/users/:id', restricted, (req, res) => {
     })
 })
 
-router.put('/users/:id', restricted, (req, res) => {
+router.put('/users/:id', (req, res) => {
     const { id } = req.params;
     const changes = req.body;
 
@@ -67,7 +67,7 @@ router.put('/users/:id', restricted, (req, res) => {
     })
 })
 
-router.delete('/users', restricted, (req, res) => {
+router.delete('/users', (req, res) => {
 
     Users.removeAll()
     .then(() => {
@@ -78,7 +78,7 @@ router.delete('/users', restricted, (req, res) => {
     })
 })
 
-router.delete('/users/:id', restricted, (req, res) => {
+router.delete('/users/:id', (req, res) => {
     const { id } = req.params;
 
     Users.remove(id)

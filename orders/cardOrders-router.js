@@ -47,7 +47,7 @@ router.get('/cardOrders/:userid', (req, res) => {
     })
 })
 
-router.post('/cardOrders', restricted, (req, res) => {
+router.post('/cardOrders', (req, res) => {
     const data = req.body;
 
     CardOrders.add(data)
@@ -59,7 +59,7 @@ router.post('/cardOrders', restricted, (req, res) => {
     })
 })
 
-router.put('/cardOrders/:id', restricted, (req, res) => {
+router.put('/cardOrders/:id', (req, res) => {
     const { id } = req.params;
     const changes = req.body;
 
@@ -79,7 +79,7 @@ router.put('/cardOrders/:id', restricted, (req, res) => {
     })
 })
 
-router.delete('/cardOrders', restricted, (req, res) => {
+router.delete('/cardOrders', (req, res) => {
 
     CardOrders.removeAll()
     .then(() => {
@@ -90,7 +90,7 @@ router.delete('/cardOrders', restricted, (req, res) => {
     })
 })
 
-router.delete('/cardOrders/:id', restricted, (req, res) => {
+router.delete('/cardOrders/:id', (req, res) => {
     const { id } = req.params;
 
     CardOrders.removeById(id)
