@@ -26,9 +26,9 @@ server.use('/api/accounts', userRouter);
 
 server.use('/api/form', contactRouter);
 
-server.use('/api/carts', cartsRouter);
-server.use('/api/cards', cardsRouter);
-server.use('/api/watches', watchesRouter);
+server.use('/api/store', cartsRouter);
+server.use('/api/store', cardsRouter);
+server.use('/api/store', watchesRouter);
 
 server.get("/", (req, res) => {
     res.status(200).json({ api: "up" });

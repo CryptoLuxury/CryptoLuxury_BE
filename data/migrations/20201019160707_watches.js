@@ -3,7 +3,7 @@ exports.up = function(knex) {
       watches.increments();
   
       watches
-        .string('name', 255)
+        .string('title', 255)
         .notNullable()
       
       watches
@@ -12,6 +12,10 @@ exports.up = function(knex) {
 
       watches
         .string('description', 255)
+        .notNullable();
+
+      watches
+        .string('image')
         .notNullable();
     });
 };
