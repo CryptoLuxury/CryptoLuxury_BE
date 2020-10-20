@@ -15,7 +15,7 @@ exports.up = function(knex) {
         .onDelete('CASCADE')
     });
 };
-  
+
 exports.down = function(knex) {
     return knex.schema.dropTableIfExists('carts');
 };

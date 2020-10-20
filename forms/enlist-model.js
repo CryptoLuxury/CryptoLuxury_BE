@@ -3,7 +3,6 @@ const db = require('../data/dbConfig.js')
 module.exports = {
     findAll,
     findById,
-    findByUserId,
     add,
     update,
     removeAll,
@@ -11,41 +10,33 @@ module.exports = {
 }
 
 function findAll(){
-    return db('cardOrders')
+    return db('enlist')
 }
 
 function findById(id) {
-    return db('cardOrders')
+    return db('enlist')
         .where({ id })
         .first()
 }
 
-function findByUserId(user_id) {
-    return db('cardOrders')
-        .select('c.*', 'users.name')
-        .join('users', 'c.user_id', '=', 'users.id')
-        // .join('cards as p', 'c.card_id', '=', 'p.id')
-        .where({ user_id })
-}
-
 function add(data){
-    return db('cardOrders')
+    return db('enlist')
         .insert(data)
 }
 
 function update(changes, id){
-    return db('cardOrders')
+    return db('enlist')
         .update(changes)
         .where({ id })
 }
 
 function removeAll(){
-    return db('cardOrders')
+    return db('enlist')
         .del()
 }
 
 function removeById(id){
-    return db('cardOrders')
+    return db('enlist')
         .where({ id })
         .del()
 }
