@@ -11,39 +11,42 @@ module.exports = {
 }
 
 function findAll(){
-    return db('carts')
+    return db('cardOrders')
 }
 
 function findById(id) {
-    return db('carts')
+    return db('cardOrders')
         .where({ id })
         .first()
 }
 
 function findByUserId(user_id) {
-    return db('carts')
+    return db('cardOrders as c')
+        .select('c.*', 'u.name', 'p.title')
+        .join('users as u', 'c.user_id', '=', 'u.id', 
+              'cards as p', 'c.card_id', '=', 'p.id')
         .where({ user_id })
         .first()
 }
 
 function add(data){
-    return db('carts')
+    return db('cardOrders')
         .insert(data)
 }
 
 function update(changes, id){
-    return db('carts')
+    return db('cardOrders')
         .update(changes)
         .where({ id })
 }
 
 function removeAll(){
-    return db('carts')
+    return db('cardOrders')
         .del()
 }
 
 function removeById(id){
-    return db('carts')
+    return db('cardOrders')
         .where({ id })
         .del()
 }

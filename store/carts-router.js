@@ -31,6 +31,22 @@ router.get('/carts/:id', (req, res) => {
     })
 })
 
+router.get('/carts/:userid', (req, res) => {
+    const { id } = req.params;
+
+    Carts.findByUserId(id)
+    .then(carts => {
+        if(carts.id >= 0){
+            return res.status(200).json(carts)
+        } else {
+            return res.status(404).json({ message: 'Error id invalid' })
+        }
+    })
+    .catch(() => {
+        res.status(500).json({ message: 'Error Retrieving cart' })
+    })
+})
+
 router.post('/carts', restricted, (req, res) => {
     const data = req.body;
 
