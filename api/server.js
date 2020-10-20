@@ -7,7 +7,8 @@ const authAdmin = require('../admins/authAdmins-router.js')
 const userRouter = require('../users/users-router.js')
 const adminRouter = require('../admins/admins-router.js')
 
-const contactRouter = require('../contact/contact-router.js')
+const contactRouter = require('../forms/contact-router.js')
+const devTicketRouter = require('../forms/devTicket-router.js')
 
 const cartsRouter = require('../store/carts-router.js')
 const cardsRouter = require('../store/cards-router.js')
@@ -25,6 +26,7 @@ server.use('/api/users', authUser);
 server.use('/api/accounts', userRouter);
 
 server.use('/api/form', contactRouter);
+server.use('/api/form', devTicketRouter);
 
 server.use('/api/store', cartsRouter);
 server.use('/api/store', cardsRouter);
