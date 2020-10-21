@@ -18,12 +18,12 @@ router.get('/users', (req, res) => {
 router.get('/users/:email', (req, res) => {
     email = req.params.email
 
-    Users.findBy(id)
+    Users.findBy(email)
     .then(user => {
-        if(user.id > 0){
+        if(user.email > 0){
             return res.status(200).json(user)
         } else {
-            return res.status(404).json({ message: 'Error id invalid' })
+            return res.status(404).json({ message: 'Error email invalid' })
         }
     })
     .catch(() => {
@@ -32,7 +32,7 @@ router.get('/users/:email', (req, res) => {
 })
 
 router.get('/users/:id', (req, res) => {
-    id = req.params.id
+    const id  = req.params.id
 
     Users.findById(id)
     .then(user => {
@@ -48,7 +48,7 @@ router.get('/users/:id', (req, res) => {
 })
 
 router.put('/users/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
     const changes = req.body;
 
     Users.findById(id)
@@ -79,7 +79,7 @@ router.delete('/users', (req, res) => {
 })
 
 router.delete('/users/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     Users.remove(id)
     .then(deleted => {

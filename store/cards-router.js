@@ -16,7 +16,7 @@ router.get('/cards', (req, res) => {
 })
 
 router.get('/cards/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     Cards.findById(id)
     .then(cards => {
@@ -44,7 +44,7 @@ router.post('/cards', (req, res) => {
 })
 
 router.put('/cards/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
     const changes = req.body;
 
     Cards.findById(id)
@@ -75,7 +75,7 @@ router.delete('/cards', (req, res) => {
 })
 
 router.delete('/cards/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     Cards.removeById(id)
     .then(deleted => {

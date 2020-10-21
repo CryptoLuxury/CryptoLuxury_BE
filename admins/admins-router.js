@@ -16,7 +16,7 @@ router.get('/admins', (req, res) => {
 })
 
 router.get('/admins/:id', (req, res) => {
-    id = req.params.id
+    const id  = req.params.id
 
     Admin.findById(id)
     .then(admin => {
@@ -32,7 +32,7 @@ router.get('/admins/:id', (req, res) => {
 })
 
 router.put('/admins/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
     const changes = req.body;
 
     Admin.findById(id)
@@ -52,7 +52,7 @@ router.put('/admins/:id', (req, res) => {
 })
 
 router.delete('/admins/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     Admin.remove(id)
     .then(deleted => {

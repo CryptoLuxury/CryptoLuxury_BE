@@ -16,7 +16,7 @@ router.get('/enlist', (req, res) => {
 })
 
 router.get('/enlist/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     Enlist.findById(id)
     .then(enlist => {
@@ -44,7 +44,7 @@ router.post('/enlist', (req, res) => {
 })
 
 router.put('/enlist/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
     const changes = req.body;
 
     Enlist.findById(id)
@@ -75,7 +75,7 @@ router.delete('/enlist', (req, res) => {
 })
 
 router.delete('/enlist/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     Enlist.removeById(id)
     .then(deleted => {

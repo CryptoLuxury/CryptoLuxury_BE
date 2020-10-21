@@ -16,7 +16,7 @@ router.get('/watches', (req, res) => {
 })
 
 router.get('/watches/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     Watches.findById(id)
     .then(watches => {
@@ -44,7 +44,7 @@ router.post('/watches', (req, res) => {
 })
 
 router.put('/watches/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
     const changes = req.body;
 
     Watches.findById(id)
@@ -75,7 +75,7 @@ router.delete('/watches', (req, res) => {
 })
 
 router.delete('/watches/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     Watches.removeById(id)
     .then(deleted => {

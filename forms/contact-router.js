@@ -16,7 +16,7 @@ router.get('/contact', (req, res) => {
 })
 
 router.get('/contact/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     Contact.findById(id)
     .then(contact => {
@@ -44,7 +44,7 @@ router.post('/contact', (req, res) => {
 })
 
 router.put('/contact/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
     const changes = req.body;
 
     Contact.findById(id)
@@ -75,7 +75,7 @@ router.delete('/contact', (req, res) => {
 })
 
 router.delete('/contact/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     Contact.removeById(id)
     .then(deleted => {

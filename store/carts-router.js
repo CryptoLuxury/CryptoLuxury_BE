@@ -16,7 +16,7 @@ router.get('/carts', (req, res) => {
 })
 
 router.get('/carts/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     Carts.findById(id)
     .then(carts => {
@@ -31,15 +31,15 @@ router.get('/carts/:id', (req, res) => {
     })
 })
 
-router.get('/carts/:userid', (req, res) => {
-    const { id } = req.params;
+router.get('/carts/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
 
-    Carts.findByUserId(id)
+    Carts.findByUserId(user_id)
     .then(carts => {
-        if(carts.id >= 0){
+        if(carts.user_id >= 0){
             return res.status(200).json(carts)
         } else {
-            return res.status(404).json({ message: 'Error id invalid' })
+            return res.status(404).json({ message: 'Error user_id invalid' })
         }
     })
     .catch(() => {
@@ -60,7 +60,7 @@ router.post('/carts', (req, res) => {
 })
 
 router.put('/carts/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
     const changes = req.body;
 
     Carts.findById(id)
@@ -91,7 +91,7 @@ router.delete('/carts', (req, res) => {
 })
 
 router.delete('/carts/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     Carts.removeById(id)
     .then(deleted => {

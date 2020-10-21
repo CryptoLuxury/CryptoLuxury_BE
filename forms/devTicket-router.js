@@ -16,7 +16,7 @@ router.get('/devTicket', (req, res) => {
 })
 
 router.get('/devTicket/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     DevTicket.findById(id)
     .then(devTicket => {
@@ -44,7 +44,7 @@ router.post('/devTicket', (req, res) => {
 })
 
 router.put('/devTicket/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
     const changes = req.body;
 
     DevTicket.findById(id)
@@ -75,7 +75,7 @@ router.delete('/devTicket', (req, res) => {
 })
 
 router.delete('/devTicket/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     DevTicket.removeById(id)
     .then(deleted => {

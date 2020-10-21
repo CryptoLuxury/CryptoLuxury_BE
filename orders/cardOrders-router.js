@@ -16,15 +16,15 @@ router.get('/cardOrders', (req, res) => {
 })
 
 router.get('/cardOrders/:user_id', (req, res) => {
-    const { id } = req.params;
+    const user_id = req.params.user_id;
 
     try {
-        CardOrders.findByUserId(id)
+        CardOrders.findByUserId(user_id)
         .then(cardOrders => {
-            if(cardOrders.id >= 0){
+            if(cardOrders.user_id >= 0){
                 return res.status(200).json(cardOrders)
             } else {
-                return res.status(404).json({ message: 'Error id invalid' })
+                return res.status(404).json({ message: 'Error user_id invalid' })
             }
         })
         .catch((err) => {
@@ -49,7 +49,7 @@ router.post('/cardOrders', (req, res) => {
 })
 
 router.put('/cardOrders/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
     const changes = req.body;
 
     CardOrders.findById(id)
@@ -80,7 +80,7 @@ router.delete('/cardOrders', (req, res) => {
 })
 
 router.delete('/cardOrders/:id', (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
 
     CardOrders.removeById(id)
     .then(deleted => {
