@@ -19,6 +19,10 @@ exports.up = function(knex) {
         .inTable('watches')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
+
+      watchOrders
+        .string('status')
+        .notNullable()
     });
 };
   

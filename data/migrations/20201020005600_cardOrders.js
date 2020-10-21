@@ -19,6 +19,10 @@ exports.up = function(knex) {
         .inTable('cards')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
+
+      cardOrders
+        .string('status')
+        .notNullable()
     });
 };
   
