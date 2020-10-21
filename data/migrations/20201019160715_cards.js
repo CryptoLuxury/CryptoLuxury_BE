@@ -13,10 +13,6 @@ exports.up = function(knex) {
       cards
         .string('description', 255)
         .notNullable();
-
-      cards
-        .string('image')
-        .notNullable();
     });
 };
   
