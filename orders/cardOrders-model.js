@@ -21,9 +21,11 @@ function findById(id) {
 }
 
 function findByUserId(user_id) {
-    return db('cardOrders')
+    return db('cardOrders as c')
+        .select('c.*', 'u.name', 'p.title')
+        .join('users as u', 'c.user_id', '=', 'u.id')
+        .join('cards as p', 'c.card_id', '=', 'p.id')
         .where({ user_id })
-        .first()
 }
 
 function add(data){

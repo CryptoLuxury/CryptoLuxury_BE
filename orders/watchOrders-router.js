@@ -15,36 +15,21 @@ router.get('/watchOrders', (req, res) => {
     })
 })
 
-router.get('/watchOrders/:id', (req, res) => {
-    const { id } = req.params;
+router.get('/watchOrders/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
 
-    WatchOrders.findById(id)
-    .then(watchOrders => {
-        if(watchOrders.id >= 0){
-            return res.status(200).json(watchOrders)
-        } else {
-            return res.status(404).json({ message: 'Error id invalid' })
-        }
-    })
-    .catch(() => {
-        res.status(500).json({ message: 'Error Retrieving watchOrder' })
-    })
-})
-
-router.get('/watchOrders/:userid', (req, res) => {
-    const { id } = req.params;
-
-    WatchOrders.findByUserId(id)
-    .then(watchOrders => {
-        if(watchOrders.id >= 0){
-            return res.status(200).json(watchOrders)
-        } else {
-            return res.status(404).json({ message: 'Error id invalid' })
-        }
-    })
-    .catch(() => {
-        res.status(500).json({ message: 'Error Retrieving watchOrder' })
-    })
+    try {
+        WatchOrders.findByUserId(user_id)
+        .then(watchOrders => {
+            res.status(200).json(watchOrders)
+        })
+        .catch((err) => {
+            res.status(500).json({ message: 'Error Retrieving watchOrder', error: err.message })
+        })
+    }
+    catch(err){
+        res.status(500).json({ error: err.message })
+    }
 })
 
 router.post('/watchOrders', (req, res) => {
@@ -67,8 +52,8 @@ router.put('/watchOrders/:id', (req, res) => {
     .then(watchOrders => {
         if (watchOrders){
             watchOrders.update(changes, id)
-            .then(updatedwatchOrders => {
-                res.status(200).json(updatedwatchOrders)
+            .then(updatedWatchOrders => {
+                res.status(200).json(updatedWatchOrders)
             });
         } else {
             res.status(404).json({ message: 'Could not find specified watchOrder'})

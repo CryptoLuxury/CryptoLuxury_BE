@@ -23,10 +23,9 @@ function findById(id) {
 function findByUserId(user_id) {
     return db('watchOrders as w')
         .select('w.*', 'u.name', 'p.title')
-        .join('users as u', 'w.user_id', '=', 'u.id', 
-              'watches as p', 'w.watch_id', '=', 'p.id')
+        .join('users as u', 'w.user_id', '=', 'u.id')
+        .join('watches as p', 'w.watch_id', '=', 'p.id')
         .where({ user_id })
-        .first()
 }
 
 function add(data){

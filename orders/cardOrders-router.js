@@ -21,11 +21,7 @@ router.get('/cardOrders/:user_id', (req, res) => {
     try {
         CardOrders.findByUserId(user_id)
         .then(cardOrders => {
-            if(cardOrders.user_id >= 0){
-                return res.status(200).json(cardOrders)
-            } else {
-                return res.status(404).json({ message: 'Error user_id invalid' })
-            }
+            res.status(200).json(cardOrders)
         })
         .catch((err) => {
             res.status(500).json({ message: 'Error Retrieving cardOrder', error: err.message })
