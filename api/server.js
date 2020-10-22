@@ -11,6 +11,8 @@ const contactRouter = require('../forms/contact-router.js')
 const devTicketRouter = require('../forms/devTicket-router.js')
 const enlistRouter = require('../forms/enlist-router.js')
 
+const teamRouter = require('../team/team-router.js')
+
 const cardOrders = require('../orders/cardOrders-router.js')
 const watchOrders = require('../orders/watchOrders-router.js')
 
@@ -28,6 +30,8 @@ server.use('/api/auth', authAdmin);
 server.use('/api/accounts', adminRouter);
 server.use('/api/users', authUser);
 server.use('/api/accounts', userRouter);
+
+server.use('/api', teamRouter)
 
 server.use('/api/form', contactRouter);
 server.use('/api/form', devTicketRouter);
