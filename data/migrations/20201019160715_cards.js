@@ -13,6 +13,10 @@ exports.up = function(knex) {
       cards
         .string('description', 255)
         .notNullable();
+
+      cards 
+        .string('bitpay')
+        .notNullable()
     });
 };
   

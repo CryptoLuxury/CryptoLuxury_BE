@@ -13,6 +13,10 @@ exports.up = function(knex) {
       watches
         .string('description', 255)
         .notNullable();
+
+      watches
+        .string('bitpay')
+        .notNullable()
     });
 };
   
