@@ -10,33 +10,33 @@ module.exports = {
 }
 
 function findAll(){
-    return db('contact')
+    return db('team')
 }
 
 function findById(id) {
-    return db('contact')
+    return db('team')
         .where({ id })
         .first()
 }
 
 function add(data){
-    return db('contact')
+    return db('team')
         .insert(data)
 }
 
 function update(changes, id){
-    return db('contact')
+    return db('team')
         .update(changes)
         .where({ id })
 }
 
 function removeAll(){
-    return db('contact')
+    return db('team')
         .del()
 }
 
 function removeById(id){
-    return db('contact')
+    return db('team')
         .where({ id })
         .del()
 }
