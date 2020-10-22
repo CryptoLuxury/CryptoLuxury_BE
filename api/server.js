@@ -15,7 +15,9 @@ const teamRouter = require('../team/team-router.js')
 
 const cardOrders = require('../orders/cardOrders-router.js')
 const watchOrders = require('../orders/watchOrders-router.js')
+
 const paypalRouter = require('../paypal/paypal-router.js')
+const stripeRouter = require('../stripe/stripe-router.js')
 
 const cartsRouter = require('../store/carts-router.js')
 const cardsRouter = require('../store/cards-router.js')
@@ -43,7 +45,9 @@ server.use('/api/form', watchOrders);
 server.use('/api/store', cartsRouter);
 server.use('/api/store', cardsRouter);
 server.use('/api/store', watchesRouter);
+
 server.use('/api/paypal', paypalRouter)
+server.use('/api/stripe', stripeRouter)
 
 server.get("/", (req, res) => {
     res.status(200).json({ api: "up" });

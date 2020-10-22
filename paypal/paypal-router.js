@@ -7,7 +7,7 @@ const router = express.Router()
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
     'client_id': 'AZG3om2STdET85N8LjYaF8vpxPHd2tme1QXRDr9Qu9k1qtxfkPUNWnI7frZ5Flwkmbe9v2fN8305w4Pu',
-    'client_secret': `${process.env.CLIENT_ID}`
+    'client_secret': process.env.CLIENT_ID
 });
 
 function add(data){
@@ -16,8 +16,10 @@ function add(data){
 
 router.post('/pay', (req, res) => {
     const data = req.body;
-    console.log(data.name)
-        
+
+    try {
+        add(data)
+        .then(info => {
             const create_payment_json = {
                 "intent": "sale",
                 "payer": {
@@ -30,18 +32,18 @@ router.post('/pay', (req, res) => {
                 "transactions": [{
                     "item_list": {
                         "items": [{
-                            "name": `${req.body.name}`,
-                            "sku": `${req.body.sku}`,
-                            "price": `${req.body.price}`,
+                            "name": `${info.name}`,
+                            "sku": `${info.sku}`,
+                            "price": `${info.price}`,
                             "currency": "USD",
-                            "quantity": `${req.body.quantity}`
+                            "quantity": `${info.quantity}`
                         }]
                     },
                     "amount": {
                         "currency": "USD",
-                        "total": `${req.body.price}`
+                        "total": `${info.price}`
                     },
-                    "description": `${req.body.description}`
+                    "description": `${info.description}`
                 }]
             }
 
@@ -57,6 +59,15 @@ router.post('/pay', (req, res) => {
                 }
             });
         })
+        .catch(err => {
+            res.status(500).json({ message: 'Payment method failed', error: err.message })
+        })
+  
+    }
+    catch(err) {
+        res.status(500).json({ message: 'Payment method failed', error: err.message })
+    }
+})
 
 router.get('/success', (req, res) => {
     for (const key in req.query) {
