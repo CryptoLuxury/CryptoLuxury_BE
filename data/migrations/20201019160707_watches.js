@@ -15,6 +15,10 @@ exports.up = function(knex) {
         .notNullable();
 
       watches
+        .string('quantity')
+        .notNullable();
+
+      watches
         .string('bitpay')
         .notNullable()
     });

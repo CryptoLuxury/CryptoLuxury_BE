@@ -14,6 +14,10 @@ exports.up = function(knex) {
         .string('description', 255)
         .notNullable();
 
+      cards
+        .string('quantity')
+        .notNullable();
+
       cards 
         .string('bitpay')
         .notNullable()
