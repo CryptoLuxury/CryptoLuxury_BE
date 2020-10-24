@@ -3,7 +3,7 @@ exports.up = function(knex) {
       watches.increments();
   
       watches
-        .string('title', 255)
+        .string('name', 255)
         .notNullable()
       
       watches

@@ -3,7 +3,7 @@ exports.up = function(knex) {
       cards.increments();
   
       cards
-        .string('title', 255)
+        .string('name', 255)
         .notNullable()
       
       cards
