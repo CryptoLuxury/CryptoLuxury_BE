@@ -5,7 +5,7 @@ const router = express.Router()
 
 // Set your secret key. Remember to switch to your live secret key in production!
 // See your keys here: https://dashboard.stripe.com/account/apikeys
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const stripe = require('stripe')(`${process.env.SECRET_KEY}`);
 
 router.use(bodyParser.urlencoded({
     extended: true

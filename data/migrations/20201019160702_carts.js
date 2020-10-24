@@ -1,16 +1,20 @@
 exports.up = function(knex) {
     return knex.schema.createTable('carts', carts => {
       carts.increments();
-  
-      carts
-        .string('items', 255)
       
       carts
-        .integer('user_id')
+        .integer('card_id')
         .unsigned()
-        .notNullable()
         .references('id')
-        .inTable('users')
+        .inTable('cards')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE')
+
+      carts
+        .integer('watch_id')
+        .unsigned()
+        .references('id')
+        .inTable('watches')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
     });
