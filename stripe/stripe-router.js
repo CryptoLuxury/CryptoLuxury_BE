@@ -27,9 +27,9 @@ router.post('/create-checkout-session', async (req, res) => {
           product_data: {
             name: `${req.body.name}`,
           },
-          unit_amount: `${req.body.price}`,
+          unit_amount: req.body.price,
         },
-        quantity: `${req.body.quantity}`,
+        quantity: req.body.quantity,
       },
     ],
     mode: 'payment',
