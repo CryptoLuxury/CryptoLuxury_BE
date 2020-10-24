@@ -7,7 +7,7 @@ exports.up = function(knex) {
         .notNullable()
       
       watches
-        .string('price', 255)
+        .integer('price')
         .notNullable()
 
       watches
@@ -15,7 +15,7 @@ exports.up = function(knex) {
         .notNullable();
 
       watches
-        .string('quantity')
+        .string('sku')
         .notNullable();
 
       watches
