@@ -1,6 +1,15 @@
 exports.up = function(knex) {
     return knex.schema.createTable('carts', carts => {
       carts.increments();
+
+      carts
+        .integer('user_id')
+        .unsigned()
+        .notNullable()
+        .references('id')
+        .inTable('users')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE')
       
       carts
         .integer('card_id')
