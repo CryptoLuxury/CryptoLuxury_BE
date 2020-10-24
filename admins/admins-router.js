@@ -38,7 +38,7 @@ router.put('/admins/:id', (req, res) => {
     Admin.findById(id)
     .then(admin => {
         if (admin){
-            admin.update(changes, id)
+            Admin.update(changes, id)
             .then(updatedAdmin => {
                 res.status(200).json(updatedAdmin)
             });

@@ -51,7 +51,7 @@ router.put('/watchOrders/:id', (req, res) => {
     WatchOrders.findById(id)
     .then(watchOrders => {
         if (watchOrders){
-            watchOrders.update(changes, id)
+            WatchOrders.update(changes, id)
             .then(updatedWatchOrders => {
                 res.status(200).json(updatedWatchOrders)
             });

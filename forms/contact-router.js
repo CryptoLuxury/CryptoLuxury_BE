@@ -50,7 +50,7 @@ router.put('/contact/:id', (req, res) => {
     Contact.findById(id)
     .then(contact => {
         if (contact){
-            contact.update(changes, id)
+            Contact.update(changes, id)
             .then(updatedContact => {
                 res.status(200).json(updatedContact)
             });

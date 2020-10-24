@@ -50,11 +50,11 @@ router.get('/users/:id', (req, res) => {
 router.put('/users/:id', (req, res) => {
     const id  = req.params.id;
     const changes = req.body;
-
+    try{
     Users.findById(id)
     .then(user => {
         if (user){
-            user.update(changes, id)
+            Users.update(changes, id)
             .then(updatedUser => {
                 res.status(200).json(updatedUser)
             });
@@ -62,9 +62,12 @@ router.put('/users/:id', (req, res) => {
             res.status(404).json({ message: 'Could not find specified user'})
         }
     })
-    .catch(() => {
-        res.status(500).json({ message: 'Error updating user' })
+    .catch((err) => {
+        res.status(500).json({ message: 'Error updating user', error: err.message })
     })
+    } catch (err){
+        res.status(500).json({ message: 'Error updating user', error: err.message })
+    }
 })
 
 router.delete('/users', (req, res) => {

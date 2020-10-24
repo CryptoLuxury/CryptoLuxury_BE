@@ -50,7 +50,7 @@ router.put('/devTicket/:id', (req, res) => {
     DevTicket.findById(id)
     .then(devTicket => {
         if (devTicket){
-            devTicket.update(changes, id)
+            DevTicket.update(changes, id)
             .then(updatedDevTicket => {
                 res.status(200).json(updatedDevTicket)
             });

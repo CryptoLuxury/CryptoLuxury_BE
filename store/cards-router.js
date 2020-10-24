@@ -50,7 +50,7 @@ router.put('/cards/:id', (req, res) => {
     Cards.findById(id)
     .then(cards => {
         if (cards){
-            cards.update(changes, id)
+            Cards.update(changes, id)
             .then(updatedCards => {
                 res.status(200).json(updatedCards)
             });

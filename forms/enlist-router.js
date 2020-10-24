@@ -50,7 +50,7 @@ router.put('/enlist/:id', (req, res) => {
     Enlist.findById(id)
     .then(enlist => {
         if (enlist){
-            enlist.update(changes, id)
+            Enlist.update(changes, id)
             .then(updatedEnlist => {
                 res.status(200).json(updatedEnlist)
             });

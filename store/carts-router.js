@@ -66,7 +66,7 @@ router.put('/carts/:id', (req, res) => {
     Carts.findById(id)
     .then(carts => {
         if (carts){
-            carts.update(changes, id)
+            Carts.update(changes, id)
             .then(updatedCarts => {
                 res.status(200).json(updatedCarts)
             });

@@ -51,7 +51,7 @@ router.put('/cardOrders/:id', (req, res) => {
     CardOrders.findById(id)
     .then(cardOrders => {
         if (cardOrders){
-            cardOrders.update(changes, id)
+            CardOrders.update(changes, id)
             .then(updatedCardOrders => {
                 res.status(200).json(updatedCardOrders)
             });

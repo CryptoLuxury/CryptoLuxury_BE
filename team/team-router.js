@@ -50,7 +50,7 @@ router.put('/team/:id', (req, res) => {
     Team.findById(id)
     .then(team => {
         if (team){
-            team.update(changes, id)
+            Team.update(changes, id)
             .then(updatedTeam => {
                 res.status(200).json(updatedTeam)
             });
