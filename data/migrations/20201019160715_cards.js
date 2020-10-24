@@ -15,7 +15,7 @@ exports.up = function(knex) {
         .notNullable();
 
       cards
-        .string('sku')
+        .integer('quantity')
         .notNullable();
 
       cards 

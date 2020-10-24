@@ -15,7 +15,7 @@ exports.up = function(knex) {
         .notNullable();
 
       watches
-        .string('sku')
+        .integer('quantity')
         .notNullable();
 
       watches
