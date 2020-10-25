@@ -19,6 +19,7 @@ const watchOrders = require('../orders/watchOrders-router.js')
 const paypalRouter = require('../paypal/paypal-router.js')
 const stripeRouter = require('../stripe/stripe-router.js')
 
+const featureRouter = require('../store/feature-router.js')
 const cartsRouter = require('../store/carts-router.js')
 const cardsRouter = require('../store/cards-router.js')
 const watchesRouter = require('../store/watches-router.js')
@@ -42,6 +43,7 @@ server.use('/api/form', enlistRouter);
 server.use('/api/form', cardOrders);
 server.use('/api/form', watchOrders);
 
+server.use('/api/store', featureRouter)
 server.use('/api/store', cartsRouter);
 server.use('/api/store', cardsRouter);
 server.use('/api/store', watchesRouter);
