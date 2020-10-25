@@ -28,14 +28,6 @@ function findByUserId(user_id) {
         .where({ user_id })
 }
 
-// function findByUserId(user_id) {
-//     return db('cardOrders as c')
-//         .select('c.*', 'u.name', 'p.title')
-//         .join('users as u', 'c.user_id', '=', 'u.id')
-//         .join('cards as p', 'c.card_id', '=', 'p.id')
-//         .where({ user_id })
-// }
-
 function add(data){
     return db('carts')
         .insert(data)
