@@ -15,32 +15,12 @@ router.get('/carts', (req, res) => {
     })
 })
 
-router.get('/carts/:id', (req, res) => {
-    const id  = req.params.id;
-
-    Carts.findById(id)
-    .then(carts => {
-        if(carts.id >= 0){
-            return res.status(200).json(carts)
-        } else {
-            return res.status(404).json({ message: 'Error id invalid' })
-        }
-    })
-    .catch(() => {
-        res.status(500).json({ message: 'Error Retrieving cart' })
-    })
-})
-
 router.get('/carts/:user_id', (req, res) => {
     const user_id = req.params.user_id;
 
     Carts.findByUserId(user_id)
     .then(carts => {
-        if(carts.user_id >= 0){
             return res.status(200).json(carts)
-        } else {
-            return res.status(404).json({ message: 'Error user_id invalid' })
-        }
     })
     .catch(() => {
         res.status(500).json({ message: 'Error Retrieving cart' })

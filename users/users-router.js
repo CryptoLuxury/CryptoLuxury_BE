@@ -77,7 +77,7 @@ router.delete('/users', (req, res) => {
         res.status(200).json({ message: 'All users successfully deleted' })
     })
     .catch(() => {
-        res.status(500).json({ message: 'Unable to delete boosts' })
+        res.status(500).json({ message: 'Unable to delete users' })
     })
 })
 
