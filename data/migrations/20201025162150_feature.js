@@ -13,6 +13,10 @@ exports.up = function(knex) {
       feature
         .string('subtitle', 255)
         .notNullable();
+
+      feature
+        .string('link')
+        .notNullable()
     });
 };
   
