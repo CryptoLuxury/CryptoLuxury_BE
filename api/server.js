@@ -30,26 +30,26 @@ server.use(express.json());
 server.use(helmet());
 server.use(cors());
 
-server.use('/api/auth', authAdmin);
-server.use('/api/accounts', adminRouter);
-server.use('/api/users', authUser);
-server.use('/api/accounts', userRouter);
+server.use(`${process.env.AUTH_ROUTE}`, authAdmin);
+server.use(`${process.env.ACCOUNTS_ROUTE}`, adminRouter);
+server.use(`${process.env.AUTH_ROUTE}`, authUser);
+server.use(`${process.env.ACCOUNTS_ROUTE}`, userRouter);
 
-server.use('/api', teamRouter)
+server.use(`${process.env.BASE_ROUTE}`, teamRouter)
 
-server.use('/api/form', contactRouter);
-server.use('/api/form', devTicketRouter);
-server.use('/api/form', enlistRouter);
-server.use('/api/form', cardOrders);
-server.use('/api/form', watchOrders);
+server.use(`${process.env.FORM_ROUTE}`, contactRouter);
+server.use(`${process.env.FORM_ROUTE}`, devTicketRouter);
+server.use(`${process.env.FORM_ROUTE}`, enlistRouter);
+server.use(`${process.env.FORM_ROUTE}`, cardOrders);
+server.use(`${process.env.FORM_ROUTE}`, watchOrders);
 
-server.use('/api/store', featureRouter)
-server.use('/api/store', cartsRouter);
-server.use('/api/store', cardsRouter);
-server.use('/api/store', watchesRouter);
+server.use(`${process.env.STORE_ROUTE}`, featureRouter)
+server.use(`${process.env.STORE_ROUTE}`, cartsRouter);
+server.use(`${process.env.STORE_ROUTE}`, cardsRouter);
+server.use(`${process.env.STORE_ROUTE}`, watchesRouter);
 
-server.use('/api/paypal', paypalRouter)
-server.use('/api/stripe', stripeRouter)
+server.use(`${process.env.PAYPAL_ROUTE}`, paypalRouter)
+server.use(`${process.env.STRIPE_ROUTE}`, stripeRouter)
 
 server.get("/", (req, res) => {
     res.status(200).json({ api: "up" });
