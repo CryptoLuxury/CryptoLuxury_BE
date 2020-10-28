@@ -22,7 +22,7 @@ function findById(id) {
 
 function findByUserId(user_id) {
     return db('watchOrders as w')
-        .select('w.*', 'u.name', 'p.name as watchName', 'p.price as watchPrice', 'p.description as watchDesc', 'p.quantity as watchQty')
+        .select('w.*', 'u.name', 'p.name as watchName', 'p.price as watchPrice', 'p.description as watchDesc')
         .join('users as u', 'w.user_id', '=', 'u.id')
         .join('watches as p', 'w.watch_id', '=', 'p.id')
         .where({ user_id })

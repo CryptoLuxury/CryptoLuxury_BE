@@ -7,15 +7,11 @@ exports.up = function(knex) {
         .notNullable()
       
       watches
-        .integer('price')
+        .decimal('price')
         .notNullable()
 
       watches
         .string('description', 255)
-        .notNullable();
-
-      watches
-        .integer('quantity')
         .notNullable();
 
       watches

@@ -22,7 +22,7 @@ function findById(id) {
 
 function findByUserId(user_id) {
     return db('cardOrders as c')
-        .select('c.*', 'u.name', 'p.name as cardName', 'p.price as cardPrice', 'p.description as cardDesc', 'p.quantity as cardQty')
+        .select('c.*', 'u.name', 'p.name as cardName', 'p.price as cardPrice')
         .join('users as u', 'c.user_id', '=', 'u.id')
         .join('cards as p', 'c.card_id', '=', 'p.id')
         .where({ user_id })
