@@ -7,7 +7,7 @@ exports.up = function(knex) {
         .notNullable()
       
       watches
-        .decimal('price')
+        .integer('price')
         .notNullable()
 
       watches
