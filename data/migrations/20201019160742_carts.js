@@ -14,7 +14,7 @@ exports.up = function(knex) {
       carts
         .integer('card_id')
         .unsigned()
-        .references('id')
+        .references('cardId')
         .inTable('cards')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
@@ -22,7 +22,7 @@ exports.up = function(knex) {
       carts
         .integer('watch_id')
         .unsigned()
-        .references('id')
+        .references('watchId')
         .inTable('watches')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
