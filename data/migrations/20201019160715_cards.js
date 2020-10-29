@@ -7,7 +7,7 @@ exports.up = function(knex) {
         .notNullable()
       
       cards
-        .integer('price')
+        .decimal('price')
         .notNullable()
 
       cards

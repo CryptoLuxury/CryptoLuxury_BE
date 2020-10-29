@@ -1,13 +1,13 @@
 exports.up = function(knex) {
     return knex.schema.createTable('watches', watches => {
-      watches.increments('');
+      watches.increments();
   
       watches
         .string('name', 255)
         .notNullable()
       
       watches
-        .integer('price')
+        .decimal('price')
         .notNullable()
 
       watches
