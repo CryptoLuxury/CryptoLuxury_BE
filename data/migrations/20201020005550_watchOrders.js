@@ -15,7 +15,7 @@ exports.up = function(knex) {
         .integer('watch_id')
         .unsigned()
         .notNullable()
-        .references('watchId')
+        .references('id')
         .inTable('watches')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')

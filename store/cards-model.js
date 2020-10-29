@@ -13,9 +13,9 @@ function findAll(){
     return db('cards')
 }
 
-function findById(id) {
+function findById(cardId) {
     return db('cards')
-        .where({ id })
+        .where({ cardId })
         .first()
 }
 
