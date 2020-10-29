@@ -15,10 +15,10 @@ router.get('/cards', (req, res) => {
     })
 })
 
-router.get('/cards/:cardId', (req, res) => {
-    const cardId  = req.params.cardId;
+router.get('/cards/:id', (req, res) => {
+    const id  = req.params.id;
 
-    Cards.findById(cardId)
+    Cards.findById(id)
     .then(cards => {
         if(cards.id >= 0){
             return res.status(200).json(cards)
