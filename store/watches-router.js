@@ -15,15 +15,15 @@ router.get('/watches', (req, res) => {
     })
 })
 
-router.get('/watches/:id', (req, res) => {
-    const id  = req.params.id;
+router.get('/watches/:watchId', (req, res) => {
+    const watchId  = req.params.watchId;
 
-    Watches.findById(id)
+    Watches.findById(watchId)
     .then(watches => {
-        if(watches.id >= 0){
+        if(watches.watchId >= 0){
             return res.status(200).json(watches)
         } else {
-            return res.status(404).json({ message: 'Error id invalid' })
+            return res.status(404).json({ message: 'Error watchId invalid' })
         }
     })
     .catch(() => {
@@ -43,14 +43,14 @@ router.post('/watches', (req, res) => {
     })
 })
 
-router.put('/watches/:id', (req, res) => {
-    const id  = req.params.id;
+router.put('/watches/:watchId', (req, res) => {
+    const watchId  = req.params.watchId;
     const changes = req.body;
 
-    Watches.findById(id)
+    Watches.findById(watchId)
     .then(watches => {
         if (watches){
-            Watches.update(changes, id)
+            Watches.update(changes, watchId)
             .then(updatedWatch => {
                 res.status(200).json(updatedWatch)
             });
@@ -74,10 +74,10 @@ router.delete('/watches', (req, res) => {
     })
 })
 
-router.delete('/watches/:id', (req, res) => {
-    const id  = req.params.id;
+router.delete('/watches/:watchId', (req, res) => {
+    const watchId  = req.params.watchId;
 
-    Watches.removeById(id)
+    Watches.removeById(watchId)
     .then(deleted => {
         if(deleted) {
             res.status(200).json({ message: 'watch removed' })

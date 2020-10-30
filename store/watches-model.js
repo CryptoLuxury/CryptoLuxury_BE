@@ -13,9 +13,9 @@ function findAll(){
     return db('watches')
 }
 
-function findById(id) {
+function findById(watchId) {
     return db('watches')
-        .where({ id })
+        .where({ watchId })
         .first()
 }
 
@@ -24,10 +24,10 @@ function add(data){
         .insert(data)
 }
 
-function update(changes, id){
+function update(changes, watchId){
     return db('watches')
         .update(changes)
-        .where({ id })
+        .where({ watchId })
 }
 
 function removeAll(){
@@ -35,8 +35,8 @@ function removeAll(){
         .del()
 }
 
-function removeById(id){
+function removeById(watchId){
     return db('watches')
-        .where({ id })
+        .where({ watchId })
         .del()
 }
