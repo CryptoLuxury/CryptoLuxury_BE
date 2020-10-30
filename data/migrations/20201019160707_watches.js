@@ -1,6 +1,6 @@
 exports.up = function(knex) {
     return knex.schema.createTable('watches', watches => {
-      watches.uuid('watchId')
+      watches.uuid('watchId').primary()
   
       watches
         .string('name', 255)
