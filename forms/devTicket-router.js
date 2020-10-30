@@ -4,7 +4,7 @@ const DevTicket = require('./devTicket-model')
 
 const router = express.Router()
 
-router.get('/devTicket', (req, res) => {
+router.get('/devTicket', restricted, (req, res) => {
     
     DevTicket.findAll()
     .then(devTicket => {
@@ -15,7 +15,7 @@ router.get('/devTicket', (req, res) => {
     })
 })
 
-router.get('/devTicket/:id', (req, res) => {
+router.get('/devTicket/:id', restricted, (req, res) => {
     const id  = req.params.id;
 
     DevTicket.findById(id)
@@ -43,7 +43,7 @@ router.post('/devTicket', (req, res) => {
     })
 })
 
-router.put('/devTicket/:id', (req, res) => {
+router.put('/devTicket/:id', restricted, (req, res) => {
     const id  = req.params.id;
     const changes = req.body;
 
@@ -63,7 +63,7 @@ router.put('/devTicket/:id', (req, res) => {
     })
 })
 
-router.delete('/devTicket', (req, res) => {
+router.delete('/devTicket', restricted, (req, res) => {
 
     DevTicket.removeAll()
     .then(() => {
@@ -74,7 +74,7 @@ router.delete('/devTicket', (req, res) => {
     })
 })
 
-router.delete('/devTicket/:id', (req, res) => {
+router.delete('/devTicket/:id', restricted, (req, res) => {
     const id  = req.params.id;
 
     DevTicket.removeById(id)

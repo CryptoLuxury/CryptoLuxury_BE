@@ -31,7 +31,7 @@ router.get('/team/:id', (req, res) => {
     })
 })
 
-router.post('/team', (req, res) => {
+router.post('/team', restricted, (req, res) => {
     const data = req.body;
 
     Team.add(data)
@@ -43,7 +43,7 @@ router.post('/team', (req, res) => {
     })
 })
 
-router.put('/team/:id', (req, res) => {
+router.put('/team/:id', restricted, (req, res) => {
     const id  = req.params.id;
     const changes = req.body;
 
@@ -63,7 +63,7 @@ router.put('/team/:id', (req, res) => {
     })
 })
 
-router.delete('/team', (req, res) => {
+router.delete('/team', restricted, (req, res) => {
 
     Team.removeAll()
     .then(() => {
@@ -74,7 +74,7 @@ router.delete('/team', (req, res) => {
     })
 })
 
-router.delete('/team/:id', (req, res) => {
+router.delete('/team/:id', restricted, (req, res) => {
     const id  = req.params.id;
 
     Team.removeById(id)

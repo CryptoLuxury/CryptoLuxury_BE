@@ -31,7 +31,7 @@ router.get('/products/:id', (req, res) => {
     })
 })
 
-router.post('/products', (req, res) => {
+router.post('/products', restricted, (req, res) => {
     const data = req.body;
 
     Products.add(data)
@@ -43,7 +43,7 @@ router.post('/products', (req, res) => {
     })
 })
 
-router.put('/products/:id', (req, res) => {
+router.put('/products/:id', restricted, (req, res) => {
     const id  = req.params.id;
     const changes = req.body;
 
@@ -63,7 +63,7 @@ router.put('/products/:id', (req, res) => {
     })
 })
 
-router.delete('/products', (req, res) => {
+router.delete('/products', restricted, (req, res) => {
 
     Products.removeAll()
     .then(() => {
@@ -74,7 +74,7 @@ router.delete('/products', (req, res) => {
     })
 })
 
-router.delete('/products/:id', (req, res) => {
+router.delete('/products/:id', restricted, (req, res) => {
     const id  = req.params.id;
 
     Products.removeById(id)

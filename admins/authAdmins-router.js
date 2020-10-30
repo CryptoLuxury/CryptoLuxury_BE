@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const Admin = require('./admins-model.js');
 const { jwtSecret } = require('./secrets.js');
+const restricted = require('./restricted-middleware.js')
 
 router.post('/createadmin', (req, res) => {
   let user = req.body;

@@ -7,12 +7,8 @@ exports.up = function(knex) {
         .notNullable()
       
       feature
-        .string('title', 255)
+        .string('title', 20)
         .notNullable()
-
-      feature
-        .string('subtitle', 255)
-        .notNullable();
 
       feature
         .string('link')

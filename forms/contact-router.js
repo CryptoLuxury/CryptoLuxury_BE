@@ -4,7 +4,7 @@ const Contact = require('./contact-model')
 
 const router = express.Router()
 
-router.get('/contact', (req, res) => {
+router.get('/contact', restricted, (req, res) => {
     
     Contact.findAll()
     .then(contact => {
@@ -15,7 +15,7 @@ router.get('/contact', (req, res) => {
     })
 })
 
-router.get('/contact/:id', (req, res) => {
+router.get('/contact/:id', restricted, (req, res) => {
     const id  = req.params.id;
 
     Contact.findById(id)
@@ -43,7 +43,7 @@ router.post('/contact', (req, res) => {
     })
 })
 
-router.put('/contact/:id', (req, res) => {
+router.put('/contact/:id', restricted, (req, res) => {
     const id  = req.params.id;
     const changes = req.body;
 
@@ -63,7 +63,7 @@ router.put('/contact/:id', (req, res) => {
     })
 })
 
-router.delete('/contact', (req, res) => {
+router.delete('/contact', restricted, (req, res) => {
 
     Contact.removeAll()
     .then(() => {
@@ -74,7 +74,7 @@ router.delete('/contact', (req, res) => {
     })
 })
 
-router.delete('/contact/:id', (req, res) => {
+router.delete('/contact/:id', restricted, (req, res) => {
     const id  = req.params.id;
 
     Contact.removeById(id)

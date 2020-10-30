@@ -4,7 +4,7 @@ const Admin = require('./admins-model.js')
 
 const router = express.Router()
 
-router.get('/admins', (req, res) => {
+router.get('/admins', restricted, (req, res) => {
 
     Admin.findAll()
     .then(admins => {
@@ -15,7 +15,7 @@ router.get('/admins', (req, res) => {
     })
 })
 
-router.get('/admins/:id', (req, res) => {
+router.get('/admins/:id', restricted, (req, res) => {
     const id  = req.params.id
 
     Admin.findById(id)
@@ -31,7 +31,7 @@ router.get('/admins/:id', (req, res) => {
     })
 })
 
-router.put('/admins/:id', (req, res) => {
+router.put('/admins/:id', restricted, (req, res) => {
     const id  = req.params.id;
     const changes = req.body;
 
@@ -51,7 +51,7 @@ router.put('/admins/:id', (req, res) => {
     })
 })
 
-router.delete('/admins/:id', (req, res) => {
+router.delete('/admins/:id', restricted, (req, res) => {
     const id  = req.params.id;
 
     Admin.remove(id)

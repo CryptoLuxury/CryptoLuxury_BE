@@ -15,19 +15,7 @@ router.get('/features', (req, res) => {
     })
 })
 
-router.get('/features/:user_id', (req, res) => {
-    const user_id = req.params.user_id;
-
-    Feature.findByUserId(user_id)
-    .then(features => {
-            return res.status(200).json(features)
-    })
-    .catch(() => {
-        res.status(500).json({ message: 'Error Retrieving featured item' })
-    })
-})
-
-router.post('/features', (req, res) => {
+router.post('/features', restricted, (req, res) => {
     const data = req.body;
 
     Feature.add(data)
@@ -39,7 +27,7 @@ router.post('/features', (req, res) => {
     })
 })
 
-router.put('/features/:id', (req, res) => {
+router.put('/features/:id', restricted, (req, res) => {
     const id  = req.params.id;
     const changes = req.body;
 
@@ -59,7 +47,7 @@ router.put('/features/:id', (req, res) => {
     })
 })
 
-router.delete('/features', (req, res) => {
+router.delete('/features', restricted, (req, res) => {
 
     Feature.removeAll()
     .then(() => {
@@ -70,7 +58,7 @@ router.delete('/features', (req, res) => {
     })
 })
 
-router.delete('/features/:id', (req, res) => {
+router.delete('/features/:id', restricted, (req, res) => {
     const id  = req.params.id;
 
     Feature.removeById(id)

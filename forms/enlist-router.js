@@ -4,7 +4,7 @@ const Enlist = require('./enlist-model')
 
 const router = express.Router()
 
-router.get('/enlist', (req, res) => {
+router.get('/enlist', restricted, (req, res) => {
     
     Enlist.findAll()
     .then(enlist => {
@@ -15,7 +15,7 @@ router.get('/enlist', (req, res) => {
     })
 })
 
-router.get('/enlist/:id', (req, res) => {
+router.get('/enlist/:id', restricted, (req, res) => {
     const id  = req.params.id;
 
     Enlist.findById(id)
@@ -43,7 +43,7 @@ router.post('/enlist', (req, res) => {
     })
 })
 
-router.put('/enlist/:id', (req, res) => {
+router.put('/enlist/:id', restricted, (req, res) => {
     const id  = req.params.id;
     const changes = req.body;
 
@@ -63,7 +63,7 @@ router.put('/enlist/:id', (req, res) => {
     })
 })
 
-router.delete('/enlist', (req, res) => {
+router.delete('/enlist', restricted, (req, res) => {
 
     Enlist.removeAll()
     .then(() => {
@@ -74,7 +74,7 @@ router.delete('/enlist', (req, res) => {
     })
 })
 
-router.delete('/enlist/:id', (req, res) => {
+router.delete('/enlist/:id', restricted, (req, res) => {
     const id  = req.params.id;
 
     Enlist.removeById(id)

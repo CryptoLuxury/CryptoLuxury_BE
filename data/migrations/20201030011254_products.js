@@ -5,6 +5,9 @@ exports.up = function(knex) {
       products
         .string('name', 255)
         .notNullable()
+
+      products
+        .string('type')
       
       products
         .decimal('price')
