@@ -11,15 +11,11 @@ const enlistRouter = require('../forms/enlist-router.js')
 
 const teamRouter = require('../team/team-router.js')
 
-const cardOrders = require('../orders/cardOrders-router.js')
-const watchOrders = require('../orders/watchOrders-router.js')
-
 const paypalRouter = require('../paypal/paypal-router.js')
 const stripeRouter = require('../stripe/stripe-router.js')
 
 const featureRouter = require('../store/feature-router.js')
-const cardsRouter = require('../store/cards-router.js')
-const watchesRouter = require('../store/watches-router.js')
+const productRouter = require('../store/products-router.js')
 
 const server = express();
 
@@ -35,12 +31,9 @@ server.use(`${process.env.BASE_ROUTE}`, teamRouter)
 server.use(`${process.env.FORM_ROUTE}`, contactRouter);
 server.use(`${process.env.FORM_ROUTE}`, devTicketRouter);
 server.use(`${process.env.FORM_ROUTE}`, enlistRouter);
-server.use(`${process.env.FORM_ROUTE}`, cardOrders);
-server.use(`${process.env.FORM_ROUTE}`, watchOrders);
 
 server.use(`${process.env.STORE_ROUTE}`, featureRouter)
-server.use(`${process.env.STORE_ROUTE}`, cardsRouter);
-server.use(`${process.env.STORE_ROUTE}`, watchesRouter);
+server.use(`${process.env.STORE_ROUTE}`, productRouter);
 
 server.use(`${process.env.PAYPAL_ROUTE}`, paypalRouter)
 server.use(`${process.env.STRIPE_ROUTE}`, stripeRouter)

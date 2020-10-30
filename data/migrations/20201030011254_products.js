@@ -1,25 +1,29 @@
 exports.up = function(knex) {
-    return knex.schema.createTable('watches', watches => {
-      watches.bigIncrements('watchId')
+    return knex.schema.createTable('products', products => {
+      products.increments();
   
-      watches
+      products
         .string('name', 255)
         .notNullable()
       
-      watches
+      products
         .decimal('price')
         .notNullable()
 
-      watches
+      products
         .string('description', 255)
         .notNullable();
 
-      watches
+      products
+        .string('image')
+        .notNullable()
+
+      products 
         .string('bitpay')
         .notNullable()
-    })
+    });
 };
   
 exports.down = function(knex) {
-    return knex.schema.dropTableIfExists('watches');
+    return knex.schema.dropTableIfExists('products');
 };
