@@ -3,7 +3,7 @@ exports.up = function(knex) {
       watchOrders.increments();
 
       watchOrders
-        .integer('watch_id')
+        .uuid('watch_id')
         .unsigned()
         .notNullable()
         .references('watchId')
