@@ -2,9 +2,7 @@ const express = require("express");
 const helmet = require('helmet')
 const cors = require('cors')
 
-const authUser = require('../users/authUsers-router.js')
 const authAdmin = require('../admins/authAdmins-router.js')
-const userRouter = require('../users/users-router.js')
 const adminRouter = require('../admins/admins-router.js')
 
 const contactRouter = require('../forms/contact-router.js')
@@ -20,7 +18,6 @@ const paypalRouter = require('../paypal/paypal-router.js')
 const stripeRouter = require('../stripe/stripe-router.js')
 
 const featureRouter = require('../store/feature-router.js')
-const cartsRouter = require('../store/carts-router.js')
 const cardsRouter = require('../store/cards-router.js')
 const watchesRouter = require('../store/watches-router.js')
 
@@ -32,8 +29,6 @@ server.use(cors());
 
 server.use(`${process.env.AUTH_ROUTE}`, authAdmin);
 server.use(`${process.env.ACCOUNTS_ROUTE}`, adminRouter);
-server.use(`${process.env.AUTH_ROUTE}`, authUser);
-server.use(`${process.env.ACCOUNTS_ROUTE}`, userRouter);
 
 server.use(`${process.env.BASE_ROUTE}`, teamRouter)
 
@@ -44,7 +39,6 @@ server.use(`${process.env.FORM_ROUTE}`, cardOrders);
 server.use(`${process.env.FORM_ROUTE}`, watchOrders);
 
 server.use(`${process.env.STORE_ROUTE}`, featureRouter)
-server.use(`${process.env.STORE_ROUTE}`, cartsRouter);
 server.use(`${process.env.STORE_ROUTE}`, cardsRouter);
 server.use(`${process.env.STORE_ROUTE}`, watchesRouter);
 
