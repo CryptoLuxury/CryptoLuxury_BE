@@ -7,7 +7,12 @@ exports.up = function(knex) {
         .notNullable()
 
       products
+        .string('brand')
+        .notNullable()
+
+      products
         .string('type')
+        .notNullable()
       
       products
         .decimal('price')
