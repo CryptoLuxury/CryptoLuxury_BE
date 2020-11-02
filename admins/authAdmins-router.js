@@ -13,11 +13,9 @@ router.post('/createadmin', (req, res) => {
 
   Admin.add(user)
     .then(saved => {
-      console.log(user)
       res.status(201).json(saved);
     })
     .catch(error => {
-      console.log(user)
       res.status(500).json(error);
     });
 });
