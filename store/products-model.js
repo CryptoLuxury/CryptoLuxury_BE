@@ -2,6 +2,7 @@ const db = require('../data/dbConfig.js')
 
 module.exports = {
     findAll,
+    findBy,
     findById,
     add,
     update,
@@ -11,6 +12,10 @@ module.exports = {
 
 function findAll(){
     return db('products')
+}
+function findBy(type) {
+    return db('products')
+        .where({ type })
 }
 
 function findById(id) {

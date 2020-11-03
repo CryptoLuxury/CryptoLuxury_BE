@@ -31,6 +31,18 @@ router.get('/products/:id', (req, res) => {
     })
 })
 
+router.get('/products/type/:type', (req, res) => {
+    const type  = req.params.type;
+
+    Products.findBy(type)
+    .then(products => {
+        res.status(200).json(products)
+    })
+    .catch(() => {
+        res.status(500).json({ message: 'Error Retrieving product' })
+    })
+})
+
 router.post('/products', restricted, (req, res) => {
     const data = req.body;
 
