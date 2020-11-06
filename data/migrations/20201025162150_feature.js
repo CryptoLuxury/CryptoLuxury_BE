@@ -11,6 +11,9 @@ exports.up = function(knex) {
         .notNullable()
 
       feature
+        .string('subtitle', 30)
+
+      feature
         .string('link')
         .notNullable()
     });
